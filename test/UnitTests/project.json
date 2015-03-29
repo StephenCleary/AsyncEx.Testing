@@ -14,7 +14,7 @@
     },
 
     "frameworks" : {
-        "aspnet50" : { 
+        "net46" : { 
             "dependencies": {
             }
         },
