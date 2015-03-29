@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.22609.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Nito.AsyncEx.Testing", "src\Nito.AsyncEx.Testing\Nito.AsyncEx.Testing.kproj", "{C6C3EB33-71DD-4616-B47F-1FC35BC5B903}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8FBC0C94-6B41-4290-BA5E-595D2C4D1D76}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6E60FE4B-22A0-4589-8AF2-6E8BB6AE4D98}"
+	ProjectSection(SolutionItems) = preProject
+		appveyor.yml = appveyor.yml
+		Coverage.ps1 = Coverage.ps1
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{D83376BF-DB75-423F-9DFF-C8C369CE4BD7}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "UnitTests", "test\UnitTests\UnitTests.kproj", "{4A5CD78D-E1D8-47A8-96A6-5B58291BA5CB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C6C3EB33-71DD-4616-B47F-1FC35BC5B903}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6C3EB33-71DD-4616-B47F-1FC35BC5B903}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6C3EB33-71DD-4616-B47F-1FC35BC5B903}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6C3EB33-71DD-4616-B47F-1FC35BC5B903}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A5CD78D-E1D8-47A8-96A6-5B58291BA5CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A5CD78D-E1D8-47A8-96A6-5B58291BA5CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A5CD78D-E1D8-47A8-96A6-5B58291BA5CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A5CD78D-E1D8-47A8-96A6-5B58291BA5CB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C6C3EB33-71DD-4616-B47F-1FC35BC5B903} = {8FBC0C94-6B41-4290-BA5E-595D2C4D1D76}
+		{4A5CD78D-E1D8-47A8-96A6-5B58291BA5CB} = {D83376BF-DB75-423F-9DFF-C8C369CE4BD7}
+	EndGlobalSection
+EndGlobal
