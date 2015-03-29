@@ -1,3 +1,4 @@
+$ErrorActionPreference = "Stop"
 pushd
 cd artifacts\bin\Nito.AsyncEx.Testing\Debug\net45
 
