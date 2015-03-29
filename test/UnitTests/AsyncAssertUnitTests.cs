@@ -314,6 +314,193 @@ namespace UnitTests
         }
 
         [Fact]
+        public async Task CancelsAsync_DelegateDoesNotCancel_Fails()
+        {
+            await Assert.ThrowsAsync<Exception>(async () =>
+            {
+                await AsyncAssert.CancelsAsync(async () => { await Task.Yield(); });
+            });
+        }
+
+        [Fact]
+        public async Task CancelsAsync_DelegateThrowsWrongException_Fails()
+        {
+            await Assert.ThrowsAsync<Exception>(async () =>
+            {
+                await AsyncAssert.CancelsAsync(async () => { await Task.Yield(); throw new InvalidOperationException(); });
+            });
+        }
+
+        [Fact]
+        public async Task CancelsAsync_DelegateCancels_ReturnsException()
+        {
+            var expectedException = new OperationCanceledException();
+            var result = await AsyncAssert.CancelsAsync(async () => { await Task.Yield(); throw expectedException; });
+            Assert.Same(expectedException, result);
+        }
+
+        [Fact]
+        public async Task CancelsAsync_DelegateCancelsWithDerivedException_ReturnsException()
+        {
+            var expectedException = new TaskCanceledException();
+            var result = await AsyncAssert.CancelsAsync(async () => { await Task.Yield(); throw expectedException; });
+            Assert.Same(expectedException, result);
+        }
+
+        [Fact]
+        public async Task CancelsAsync_DelegateThrowsBaseException_Fails()
+        {
+            await Assert.ThrowsAsync<Exception>(async () =>
+            {
+                await AsyncAssert.CancelsAsync(async () => { await Task.Yield(); throw new Exception(); });
+            });
+        }
+
+        [Fact]
+        public async Task CancelsAsync_SynchronousDelegateDoesNotCancel_Fails()
+        {
+            await Assert.ThrowsAsync<Exception>(async () =>
+            {
+                await AsyncAssert.CancelsAsync(() => Task.FromResult(0));
+            });
+        }
+
+        [Fact]
+        public async Task CancelsAsync_SynchronousDelegateThrowsWrongException_Fails()
+        {
+            await Assert.ThrowsAsync<Exception>(async () =>
+            {
+                await AsyncAssert.CancelsAsync(() => { throw new InvalidOperationException(); });
+            });
+        }
+
+        [Fact]
+        public async Task CancelsAsync_SynchronousDelegateCancels_ReturnsException()
+        {
+            var expectedException = new OperationCanceledException();
+            var result = await AsyncAssert.CancelsAsync(() => { throw expectedException; });
+            Assert.Same(expectedException, result);
+        }
+
+        [Fact]
+        public async Task CancelsAsync_SynchronousDelegateCancelsWithDerivedException_ReturnsException()
+        {
+            var expectedException = new TaskCanceledException();
+            var result = await AsyncAssert.CancelsAsync(() => { throw expectedException; });
+            Assert.Same(expectedException, result);
+        }
+
+        [Fact]
+        public async Task CancelsAsync_SynchronousDelegateThrowsBaseException_Fails()
+        {
+            await Assert.ThrowsAsync<Exception>(async () =>
+            {
+                await AsyncAssert.CancelsAsync(() => { throw new Exception(); });
+            });
+        }
+
+        [Fact]
+        public async Task CancelsAsync_TaskDoesNotCancel_Fails()
+        {
+            await Assert.ThrowsAsync<Exception>(async () =>
+            {
+                var tcs = new TaskCompletionSource<object>();
+                var testTask = AsyncAssert.CancelsAsync(tcs.Task);
+                tcs.SetResult(null);
+                await testTask;
+            });
+        }
+
+        [Fact]
+        public async Task CancelsAsync_TaskThrowsWrongException_Fails()
+        {
+            await Assert.ThrowsAsync<Exception>(async () =>
+            {
+                var tcs = new TaskCompletionSource<object>();
+                var testTask = AsyncAssert.CancelsAsync(tcs.Task);
+                tcs.SetException(new InvalidOperationException());
+                await testTask;
+            });
+        }
+
+        [Fact]
+        public async Task CancelsAsync_TaskCancels_ReturnsException()
+        {
+            var expectedException = new OperationCanceledException();
+            var tcs = new TaskCompletionSource<object>();
+            var testTask = AsyncAssert.CancelsAsync(tcs.Task);
+            tcs.SetException(expectedException);
+            var result = await testTask;
+            Assert.Same(expectedException, result);
+        }
+
+        [Fact]
+        public async Task CancelsAsync_TaskCancelsWithDerivedException_ReturnsException()
+        {
+            var expectedException = new TaskCanceledException();
+            var tcs = new TaskCompletionSource<object>();
+            var testTask = AsyncAssert.CancelsAsync(tcs.Task);
+            tcs.SetException(expectedException);
+            var result = await testTask;
+            Assert.Same(expectedException, result);
+        }
+
+        [Fact]
+        public async Task CancelsAsync_TaskThrowsBaseException_Fails()
+        {
+            await Assert.ThrowsAsync<Exception>(async () =>
+            {
+                var tcs = new TaskCompletionSource<object>();
+                var testTask = AsyncAssert.CancelsAsync(tcs.Task);
+                tcs.SetException(new Exception());
+                await testTask;
+            });
+        }
+
+        [Fact]
+        public async Task CancelsAsync_SynchronousTaskDoesNotCancel_Fails()
+        {
+            await Assert.ThrowsAsync<Exception>(async () =>
+            {
+                await AsyncAssert.CancelsAsync(Task.FromResult(0));
+            });
+        }
+
+        [Fact]
+        public async Task CancelsAsync_SynchronousTaskThrowsWrongException_Fails()
+        {
+            await Assert.ThrowsAsync<Exception>(async () =>
+            {
+                await AsyncAssert.CancelsAsync(Task.FromException(new InvalidOperationException()));
+            });
+        }
+
+        [Fact]
+        public async Task CancelsAsync_SynchronousTaskCancels_ReturnsException()
+        {
+            var expectedException = new OperationCanceledException();
+            var result = await AsyncAssert.CancelsAsync(Task.FromException(expectedException));
+            Assert.Same(expectedException, result);
+        }
+
+        [Fact]
+        public async Task CancelsAsync_SynchronousTaskCancelsWithDerivedException_ReturnsException()
+        {
+            var expectedException = new TaskCanceledException();
+            var result = await AsyncAssert.CancelsAsync(Task.FromException(expectedException));
+            Assert.Same(expectedException, result);
+        }
+
+        [Fact]
+        public async Task CancelsAsync_SynchronousTaskThrowsBaseException_Fails()
+        {
+            await Assert.ThrowsAsync<Exception>(async () =>
+            {
+                await AsyncAssert.CancelsAsync(Task.FromException(new Exception()));
+            });
+        }
+
+        [Fact]
         public void Throws_DelegateDoesNotThrow_Fails()
         {
             Assert.Throws<Exception>(() =>
@@ -370,6 +557,49 @@ namespace UnitTests
             Assert.Throws<Exception>(() =>
             {
                 AsyncAssert.Throws<OperationCanceledException>(() => { throw new TaskCanceledException(); }, false);
+            });
+        }
+
+        [Fact]
+        public void Cancels_DelegateDoesNotCancel_Fails()
+        {
+            Assert.Throws<Exception>(() =>
+            {
+                AsyncAssert.Cancels(() => { });
+            });
+        }
+
+        [Fact]
+        public void Cancels_DelegateThrowsWrongException_Fails()
+        {
+            Assert.Throws<Exception>(() =>
+            {
+                AsyncAssert.Cancels(() => { throw new InvalidOperationException(); });
+            });
+        }
+
+        [Fact]
+        public void Cancels_DelegateCancels_ReturnsException()
+        {
+            var expectedException = new OperationCanceledException();
+            var result = AsyncAssert.Cancels(() => { throw expectedException; });
+            Assert.Same(expectedException, result);
+        }
+
+        [Fact]
+        public void Cancels_DelegateCancelsWithDerivedException_ReturnsException()
+        {
+            var expectedException = new TaskCanceledException();
+            var result = AsyncAssert.Cancels(() => { throw expectedException; });
+            Assert.Same(expectedException, result);
+        }
+
+        [Fact]
+        public void Cancels_DelegateThrowsBaseException_Fails()
+        {
+            Assert.Throws<Exception>(() =>
+            {
+                AsyncAssert.Cancels(() => { throw new Exception(); });
             });
         }
     }

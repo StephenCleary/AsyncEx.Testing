@@ -2,6 +2,8 @@
     "version": "1.0.0-*",
     "dependencies": {
         "Nito.AsyncEx.Testing": "",
+        "System.Runtime": "4.0.20-beta-22523",
+        "System.Threading.Tasks": "4.0.10.0-beta-22605",
         "xunit": "2.0.0.0-rc3-build2880",
         "xunit.runner.aspnet": "2.0.0.0-rc3-build52",
         "OpenCover": "4.5.3809-rc94",
@@ -20,7 +22,6 @@
         },
         "aspnetcore50" : { 
             "dependencies": {
-                "System.Runtime": "4.0.20-beta-22523"
             }
         }
     }
