@@ -1,21 +1,14 @@
 {
-  "version": "1.0.0-beta-1",
-  "dependencies": {
-  },
-
-  "compilationOptions": {
+  "version": "1.0.0-beta-2",
+  "buildOptions": {
     "warningsAsErrors": true
   },
-
   "frameworks": {
-    "net45": {
+    "net45": { },
+    "netstandard1.0": {
       "dependencies": {
-      }
-    },
-    "netcore50": {
-      "dependencies": {
-        "System.Runtime": "4.0.20-beta-22523",
-        "System.Threading.Tasks": "4.0.10.0-beta-22605"
+        "System.Runtime": "4.1.0",
+        "System.Threading.Tasks": "4.0.11"
       }
     }
   }
