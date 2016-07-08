@@ -1,8 +1,9 @@
 {
-  "version": "1.0.0-delta-3",
+  "version": "1.0.0-delta-4",
   "description": "Helpful types for writing asynchronous unit tests.",
   "buildOptions": {
-    "warningsAsErrors": true
+    "warningsAsErrors": true,
+    "xmlDoc": true
   },
   "frameworks": {
     "netstandard1.0": {
