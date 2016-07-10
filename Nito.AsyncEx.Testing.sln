@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Nito.AsyncEx.Testing", "src\Nito.AsyncEx.Testing\Nito.AsyncEx.Testing.xproj", "{C6C3EB33-71DD-4616-B47F-1FC35BC5B903}"
 EndProject
@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6E60FE4B-22A0-4589-8AF2-6E8BB6AE4D98}"
 	ProjectSection(SolutionItems) = preProject
 		appveyor.yml = appveyor.yml
+		Build.ps1 = Build.ps1
 		Coverage.ps1 = Coverage.ps1
 		global.json = global.json
 	EndProjectSection
