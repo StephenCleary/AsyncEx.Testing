@@ -18,6 +18,7 @@ namespace Nito.AsyncEx.Testing
         public static TException Throws<TException>(Action action, bool allowDerivedTypes = true)
             where TException : Exception
         {
+            _ = action ?? throw new ArgumentNullException(nameof(action));
             try
             {
                 action();
@@ -51,6 +52,7 @@ namespace Nito.AsyncEx.Testing
         public static async Task<TException> ThrowsAsync<TException>(Func<Task> action, bool allowDerivedTypes = true)
             where TException : Exception
         {
+            _ = action ?? throw new ArgumentNullException(nameof(action));
             try
             {
                 await action().ConfigureAwait(false);
@@ -131,6 +133,8 @@ namespace Nito.AsyncEx.Testing
         /// <param name="timeout">The amount of time to (asynchronously) wait for the task to complete.</param>
         public static async Task NeverCompletesAsync(Task task, int timeout = 500)
         {
+            _ = task ?? throw new ArgumentNullException(nameof(task));
+
             // Wait for the task to complete, or the timeout to fire.
             var completedTask = await Task.WhenAny(task, Task.Delay(timeout)).ConfigureAwait(false);
             if (completedTask == task)
@@ -141,7 +145,9 @@ namespace Nito.AsyncEx.Testing
             {
                 throw new Exception("Task completed unexpectedly.");
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
+#pragma warning restore CA1031 // Do not catch general exception types
             {
                 var info = ExceptionDispatchInfo.Capture(ex);
                 var __ = task.ContinueWith(_ => info.Throw(), TaskScheduler.Default);

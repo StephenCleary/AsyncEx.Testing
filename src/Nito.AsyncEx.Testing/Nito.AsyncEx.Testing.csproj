@@ -2,24 +2,8 @@
 
   <PropertyGroup>
     <Description>Helpful types for writing asynchronous unit tests.</Description>
-    <Authors>Stephen Cleary</Authors>
     <TargetFrameworks>netstandard1.0;netstandard2.0</TargetFrameworks>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <AssemblyName>Nito.AsyncEx.Testing</AssemblyName>
-    <PackageId>Nito.AsyncEx.Testing</PackageId>
     <PackageTags>async;unit;test</PackageTags>
-    <PackageProjectUrl>https://github.com/StephenCleary/AsyncEx.Testing</PackageProjectUrl>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/StephenCleary/AsyncEx.Testing/master/LICENSE</PackageLicenseUrl>
-    <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/StephenCleary/AsyncEx.Testing.git</RepositoryUrl>
-    <VersionPrefix>1.0.2</VersionPrefix>
-    <VersionSuffix></VersionSuffix>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DebugType>full</DebugType>
-    <DebugSymbols>True</DebugSymbols>
   </PropertyGroup>
 
 </Project>

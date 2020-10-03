@@ -1,17 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8FBC0C94-6B41-4290-BA5E-595D2C4D1D76}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6E60FE4B-22A0-4589-8AF2-6E8BB6AE4D98}"
-	ProjectSection(SolutionItems) = preProject
-		appveyor.yml = appveyor.yml
-		Build.ps1 = Build.ps1
-		Coverage.ps1 = Coverage.ps1
-		Version.ps1 = Version.ps1
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{D83376BF-DB75-423F-9DFF-C8C369CE4BD7}"
 EndProject
@@ -40,5 +32,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{C6C3EB33-71DD-4616-B47F-1FC35BC5B903} = {8FBC0C94-6B41-4290-BA5E-595D2C4D1D76}
 		{4A5CD78D-E1D8-47A8-96A6-5B58291BA5CB} = {D83376BF-DB75-423F-9DFF-C8C369CE4BD7}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {919AC759-203D-4A85-93E3-47CA5E0862D0}
 	EndGlobalSection
 EndGlobal
